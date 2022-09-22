@@ -1,0 +1,59 @@
+version: '3.7'
+
+volumes:
+    redis_data:
+        external: true
+    mongo_data:
+        external: true
+networks:
+    int-network:
+        external: true
+
+services:
+
+    edifymongo:
+        image: mongo:4.4.12
+        container_name: edifymongo
+        restart: always
+        networks:
+            - int-network
+        volumes:
+            - mongo_data:/data/db
+            - ./data:/backup
+            - ./mongodb.conf:/etc/mongod.conf
+        ports:
+            - "27023:27017" #
+
+            #- "3.249.202.128:27023:27017"
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: ${MONGOUSER}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGOPASS}
+            MONGO_INITDB_DATABASE: ${MONGODB}
+
+
+
+
+    edifyredis:
+        image: redis:6.2.6
+        container_name: edifyredis
+        networks:
+            - int-network
+        volumes:
+            - redis_data:/data
+        ports:
+            - "127.0.0.1:6380:6379"
+        restart: always
+
+    edifyapi:
+        container_name: edifyapi
+        networks:
+            - int-network
+        user: root
+
+        build:
+            context: .
+        ports:
+            - "3000:3001"
+            - "3006:3006" #
+            - "3002:3002" #
+        restart: always

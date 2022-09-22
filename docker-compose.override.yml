@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+    edifyapi:
+        env_file:
+            - .dev.env
+
+    edifymongo:
+        platform: linux/amd64
+    edifyredis:
+        platform: linux/amd64
+
+#    kibana:
+#        platform: linux/amd64
+#    esnodeo1:
+#        profiles:
+#            - donotstart
+#        entrypoint: ["echo", "Service esnodeo1 disabled"]
+#        restart: "no"
+
+
