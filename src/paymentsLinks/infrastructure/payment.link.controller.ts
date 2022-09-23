@@ -19,7 +19,7 @@ export class PaymentLinkController{
 
 
   /*
-  prueba
+  prueba 22
   @Post('')
   async createLink(@Request() req,@Body() paymentLinkDto:PaymentLinkDto){
       return await this.paymentLinkService.create(paymentLinkDto)
