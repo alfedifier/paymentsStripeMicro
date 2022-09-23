@@ -1,7 +1,7 @@
 FROM node:16.15.1 as build
 WORKDIR /app
-COPY package*.json ./
-RUN npm install --force
+COPY ./package.json .
+RUN npm install
 RUN npm rebuild bcrypt --build-from-source
 
 
