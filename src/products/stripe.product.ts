@@ -1,5 +1,5 @@
 import Stripe from "stripe";
-import { StripeProductDto } from "../../../domain/product/product.dto";
+import { StripeProductDto } from "../stripe/domain/product/product.dto";
 
 export class StripeProductService{
 

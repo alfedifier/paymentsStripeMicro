@@ -1,17 +1,17 @@
 import { Body, Controller, Get, Post, Request } from "@nestjs/common";
 import { PaymentLinkDto } from "../../domain/payment.link.dto";
-import { PaymentLinkService } from "../../app/payment.link.service";
+import { StripeHookService } from "../service/stripe.hook.service";
 
 
 @Controller('payment/link')
-export class PaymentLinkController{
+export class StripeHookController{
 
-  constructor(private StripePaymentLink:PaymentLinkService) {}
+  constructor(private stripeHook:StripeHookService) {}
 
 
   @Post('')
   async createLink(@Request() req,@Body() paymentLinkDto:PaymentLinkDto){
-      return await this.StripePaymentLink.create(paymentLinkDto)
+
   }
 
 
