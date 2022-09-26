@@ -19,7 +19,7 @@ export class PaymentLinkService {
 
     const paymentLink =  await this.stripePaymentLink.create(paymentLinkDto);
 
-    const paymentLinkSchema:PaymentLink = {
+    /*const paymentLinkSchema:PaymentLink = {
       stripePaymentLink:paymentLink,
       type:paymentLinkDto.type,
       ref:paymentLinkDto.ref,
@@ -27,7 +27,7 @@ export class PaymentLinkService {
       updatedBy:paymentLinkDto.user
     }
 
-    await this.paymentLinkMongo.createPaymentLink(paymentLinkSchema);
+    await this.paymentLinkMongo.createPaymentLink(paymentLinkSchema);*/
 
     return paymentLink.url;
 
