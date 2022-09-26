@@ -40,5 +40,5 @@ services:
             context: .
         ports:
             - ${MAINPORT}:${MAINPORT}
-            - ${MICROPORT}:${MICROPORT}
+            #- ${MICROPORT}:${MICROPORT}
         restart: always
