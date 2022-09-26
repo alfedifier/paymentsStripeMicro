@@ -16,6 +16,7 @@ export class PaymentLinkService {
 
 
     const paymentLink =  await this.stripePaymentLink.create(paymentLinkDto);
+    console.log("the payment link is ->",paymentLink);
     return paymentLink.url;
   }
 
