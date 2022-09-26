@@ -23,7 +23,7 @@ services:
             - ${PAYMENT_VOLUME}:/data/db
             - ./data:/backup
         ports:
-            - "27024:27017"
+            - ${MONGO_PORT_EXTERNAL}:27017"
 
         environment:
             MONGO_INITDB_ROOT_USERNAME: ${MONGOUSER}
