@@ -2,6 +2,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
 import {SchemaTypes} from "mongoose";
 import Stripe from "stripe";
+import { ObjectId } from "bson";
 
 
 export type PaymentLinkDocs = PaymentLink & Document;
@@ -21,7 +22,7 @@ export class PaymentLink{
   @Prop()
   type:string;
 
-  @Prop()
+  @Prop({type:SchemaTypes.ObjectId})
   ref:string;
 
   @Prop({default:false})

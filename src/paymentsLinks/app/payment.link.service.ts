@@ -3,7 +3,8 @@ import { StripePaymentLinkService } from "../../stripe/infrastructure/service/st
 import { PaymentLinkDto } from "../domain/payment.link.dto";
 import { PaymentLink } from "../domain/payment.link.schema";
 import { PaymentLinkMongoService } from "../infrastructure/mongo/payment.link.mongo.service";
-
+import mongodb = require('mongodb');
+const ObjectID = mongodb.ObjectId;
 
 @Injectable()
 export class PaymentLinkService {
