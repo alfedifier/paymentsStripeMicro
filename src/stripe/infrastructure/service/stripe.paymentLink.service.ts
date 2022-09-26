@@ -22,19 +22,25 @@ export class StripePaymentLinkService {
     const product = await (new StripeProductService(await this.stripeConnectionService.stripe).createProduct({description:paymentLinkDto.description,product:paymentLinkDto.metadata}));
     const price = await (new StripePriceService(await this.stripeConnectionService.stripe).createPrice({description:paymentLinkDto.description,product:product,price:paymentLinkDto.price,unit:'€'}));
 
-    const paymentLink = await this.stripeConnectionService.stripe.paymentLinks.create({
-      line_items: [{price: price.id, quantity: 1}],
-      after_completion:{
-        type: 'redirect',
-        redirect:{
-          url:process.env.APP +'documents/payment_success?documentid='+paymentLinkDto.ref.toString()
+    try{
+      const paymentLink = await this.stripeConnectionService.stripe.paymentLinks.create({
+        line_items: [{price: price.id, quantity: 1}],
+        after_completion:{
+          type: 'redirect',
+          redirect:{
+            url:process.env.APP +'documents/payment_success?documentid='+paymentLinkDto.ref
+          }
         }
-      }
-    })
+
+      })
+      return paymentLink;
+    }
+    catch (e){
+      console.log(e);
+      return null;
+    }
 
 
-
-    return paymentLink;
 
   }
 
