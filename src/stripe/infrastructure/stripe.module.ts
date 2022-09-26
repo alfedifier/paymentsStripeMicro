@@ -8,12 +8,14 @@ import { StripeConnectionService } from "./service/stripe.connection.service";
 import { StripeHookService } from "./service/stripe.hook.service";
 import { PaymentLinkController } from "../../paymentsLinks/infrastructure/payment.link.controller";
 import { PaymentLinkService } from "../../paymentsLinks/app/payment.link.service";
+import { PaymentLinkMongoService } from "../../paymentsLinks/infrastructure/mongo/payment.link.mongo.service";
 
 
 @Module({
   imports: [],
-  controllers: [PaymentLinkController],
-  providers: [PaymentLinkService,StripeCustomerService,StripePaymentLinkService,StripeConnectionService,StripeHookService],
+  controllers: [],
+  providers: [StripeCustomerService,StripePaymentLinkService,StripeConnectionService,StripeHookService],
+  exports:[StripePaymentLinkService]
 })
 export class StripeModule {
 

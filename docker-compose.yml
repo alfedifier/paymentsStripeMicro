@@ -12,7 +12,7 @@ networks:
 services:
 
     paymentmongo:
-        image: mongo:5
+        image: mongo:4.4
         container_name: paymentmongo
         restart: always
         networks:
@@ -20,7 +20,6 @@ services:
         volumes:
             - paymentMongoData:/data/db
             - ./data:/backup
-            - ./mongodb.conf:/etc/mongod.conf
         ports:
             - "27024:27017"
 
