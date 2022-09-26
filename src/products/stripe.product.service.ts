@@ -6,12 +6,14 @@ export class StripeProductService{
   constructor(private stripe:Stripe) {}
 
 
-  async createProduct(stripeProductDto:StripeProductDto){
+  async createProduct(stripeProductDto:StripeProductDto,id:string){
 
       const product = await this.stripe.products.create({
       name: stripeProductDto.description,
       active:true,
-      metadata:stripeProductDto.product
+      metadata:{
+        documentId:id
+      }
     })
     return product;
 
