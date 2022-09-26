@@ -23,7 +23,7 @@ async function bootstrap() {
     transport: Transport.TCP,
     options:{
       host:'0.0.0.0',
-      port:3003
+      port:Number(process.env.MICROPORT)
     }
   });
 
@@ -86,7 +86,7 @@ async function bootstrap() {
 
   await app.startAllMicroservices();
 
-  await app.listen(3004);
+  await app.listen(Number(process.env.MAINPORT));
 }
 
 bootstrap();

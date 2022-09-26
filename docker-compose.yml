@@ -15,7 +15,7 @@ services:
 
     paymentmongo:
         image: mongo:4.4
-        container_name: paymentmongo
+        container_name: ${CONTAINER_MONGO_NAME}
         restart: always
         networks:
             - int-network
@@ -32,7 +32,7 @@ services:
 
 
     paymentsystem:
-        container_name: paymentsystem
+        container_name: ${CONTAINER_PAYMENT_NAME}
         networks:
             - int-network
         user: root
