@@ -5,6 +5,8 @@ volumes:
         external: true
     paymentMongoData:
         external: true
+    paymentMongoProdData:
+            external: true
 networks:
     int-network:
         external: true
@@ -18,7 +20,7 @@ services:
         networks:
             - int-network
         volumes:
-            - paymentMongoData:/data/db
+            - ${PAYMENT_VOLUME}:/data/db
             - ./data:/backup
         ports:
             - "27024:27017"
