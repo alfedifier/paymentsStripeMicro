@@ -39,6 +39,6 @@ services:
         build:
             context: .
         ports:
-            - "3001:3004"
-            - "3003:3003" #
+            - ${MAINPORT}:${MAINPORT}
+            - ${MICROPORT}:${MICROPORT}
         restart: always
