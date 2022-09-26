@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { StripeModule } from "./stripe/infrastructure/stripe.module";
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { HealthController } from "./app.controller";
+import { HealthController } from "./health.controller";
 
 @Module({
   imports: [
