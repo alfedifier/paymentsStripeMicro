@@ -10,8 +10,7 @@ import { MessagePattern, Payload } from "@nestjs/microservices";
 export class PaymentLinkController{
 
   constructor(private paymentLinkService:PaymentLinkService) {}
-
-
+  
   @MessagePattern('payment.link')
   async sendNotification(@Payload() paymentLinkDto: PaymentLinkDto) {
     return await this.paymentLinkService.create(paymentLinkDto)

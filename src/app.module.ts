@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { StripeModule } from "./stripe/infrastructure/stripe.module";
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { HealthController } from "./app.controller";
 
 @Module({
   imports: [
@@ -9,7 +10,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     }),
     StripeModule
   ],
-  controllers: [],
+  controllers: [HealthController],
   providers: [],
 })
 export class AppModule {
