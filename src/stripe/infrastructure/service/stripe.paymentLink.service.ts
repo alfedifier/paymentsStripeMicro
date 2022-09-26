@@ -27,7 +27,7 @@ export class StripePaymentLinkService {
       after_completion:{
         type: 'redirect',
         redirect:{
-          url:process.env.APP +'documents/payment_success'
+          url:process.env.APP +'documents/payment_success?documentid='+paymentLinkDto.ref.toString()
         }
       }
     })
