@@ -24,6 +24,12 @@ export class StripePaymentLinkService {
 
     const paymentLink = await this.stripeConnectionService.stripe.paymentLinks.create({
       line_items: [{price: price.id, quantity: 1}],
+      after_completion:{
+        type: 'redirect',
+        redirect:{
+          url:process.env.APP +'documents/payment_success'
+        }
+      }
     })
 
 
