@@ -7,7 +7,7 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { PaymentLink, PaymentLinkSchema } from "../domain/payment.link.schema";
 
 
-//prueba
+//prueba2
 @Module({
   imports: [
     MongooseModule.forFeatureAsync([
