@@ -13,7 +13,7 @@ export class StripePriceService{
 
       const price = await this.stripe.prices.create({
         currency: 'eur',
-        unit_amount: 100,
+        unit_amount: stripeProductDto.price * 100,
         product: stripeProductDto.product.id,
       })
     this.price = price;
