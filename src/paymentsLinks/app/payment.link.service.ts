@@ -43,10 +43,12 @@ export class PaymentLinkService {
 
     const paymentLinks = await this.paymentLinkMongo.getType(data,ids);
 
+    console.log(paymentLinks);
     paymentLinks.map((paymentLink:PaymentLink)=>{
 
         if(paymentLink.paid === true){
-          content[paymentLink.ref]['_id'] = true;
+
+          content[paymentLink.ref]['paid'] = true;
         }
         return paymentLink.ref;
     })
@@ -55,6 +57,7 @@ export class PaymentLinkService {
     for(var item of Object.keys(content) ){
       dataDef.push(content[item]);
     }
+
 
     return dataDef;
 

@@ -32,6 +32,6 @@ export class HookService{
 
     // Return a response to acknowledge receipt of the event
 
-      return null;
+      return true;
   }
 }
