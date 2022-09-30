@@ -9,10 +9,10 @@ export class HookService{
   processHook(stripeHook:Stripe.Event){
 
 
-    let event = stripeHook.type.split('.');
-    let type = event[0];
-    let secondType = event[1];
-    let method = event[2];
+    let event = stripeHook?.type?.split('.');
+    let type = event?.[0];
+    let secondType = event?.[1];
+    let method = event?.[2];
 
 
     switch (type) {
