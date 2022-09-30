@@ -12,9 +12,14 @@ export class PaymentLinkController{
 
   @MessagePattern('payment.link')
   async sendNotification(@Payload() paymentLinkDto: PaymentLinkDto) {
-    console.log(paymentLinkDto);
     return await this.paymentLinkService.create(paymentLinkDto)
   }
 
+  @MessagePattern('payment.link.check')
+  async checkLinks(@Payload() data: any) {
+    return await this.paymentLinkService.checkContent(data)
+  }
+
 }
+
 

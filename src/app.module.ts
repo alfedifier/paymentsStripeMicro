@@ -6,6 +6,8 @@ import { PaymentLinkMongoService } from "./paymentsLinks/infrastructure/mongo/pa
 import { MongooseModule } from "@nestjs/mongoose";
 import { PaymentLink, PaymentLinkSchema } from "./paymentsLinks/domain/payment.link.schema";
 import { PaymentLinkModule } from "./paymentsLinks/infrastructure/payment.link.module";
+import { StripeHookController } from "./hook/stripe.hook.controller";
+import { HookService } from "./hook/app/hook.service";
 
 @Module({
   imports: [
@@ -29,8 +31,8 @@ import { PaymentLinkModule } from "./paymentsLinks/infrastructure/payment.link.m
     }),
     PaymentLinkModule
   ],
-  controllers: [HealthController],
-  providers: [],
+  controllers: [HealthController,StripeHookController],
+  providers: [HookService],
 })
 export class AppModule {
 

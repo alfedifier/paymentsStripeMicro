@@ -4,6 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import mongodb = require('mongodb');
 import { PaymentLink, PaymentLinkDocs } from "../../domain/payment.link.schema";
 import { PaymentLinkDto } from "../../domain/payment.link.dto";
+import { ObjectId } from "bson";
 
 const ObjectID = mongodb.ObjectId;
 
@@ -101,4 +102,20 @@ export class PaymentLinkMongoService {
     return paymentLinks;
   }
 
+  async getType(data: any,ids:string[] | ObjectId[]):Promise<PaymentLink[]> {
+
+    ids = (ids as string[]).map((id:string)=>{
+      return new ObjectID(id);
+    })
+
+    const paymentLinks = await this.paymentLinkRepository.aggregate([
+      {
+        $match:{
+          type:data['type'],
+          _id:{$in:ids}
+        }
+      }
+    ]).exec()
+    return paymentLinks;
+  }
 }

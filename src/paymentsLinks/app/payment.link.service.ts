@@ -34,4 +34,29 @@ export class PaymentLinkService {
   }
 
 
+  async checkContent(data: any) {
+
+    let content = {}
+    const ids = (data.data as any[]).map((data:any)=>{
+      content[data['_id']] = data;
+      return new ObjectID(data['_id'].toString());
+    })
+
+    const paymentLinks = await this.paymentLinkMongo.getType(data,ids);
+
+    paymentLinks.map((paymentLink:PaymentLink)=>{
+
+        if(paymentLink.paid === true){
+          content[paymentLink.ref]['_id'] = true;
+        }
+    })
+
+    const dataDef = [];
+    for(var item of Object.keys(content) ){
+      dataDef.push(content[item]);
+    }
+
+    return dataDef;
+
+  }
 }
