@@ -112,7 +112,7 @@ export class PaymentLinkMongoService {
       {
         $match:{
           type:data['type'],
-          _id:{$in:ids}
+          ref:{$in:ids}
         }
       }
     ]).exec()
